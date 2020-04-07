@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
     	
 morse = {'a': ".-",
@@ -34,22 +36,19 @@ def main():
 		ret = "".join(ret)
 
 	if len(sys.argv) == 2 and ret != "" and ret.isalpha():
-		ret = ret.lower()
-		morse_keys = morse.keys()
-		morse_values = morse.values()		
-		aux = {}
+		ret = ret.lower()	
+		aux = ""
 
-		for i in range(0, len(ret)):		
-			for j in range(0, len(morse_keys)):		
-				if ret[i] == morse_keys[j]:	
-					aux[i] = morse_values[j]
-											
-		ret = aux.values()
-		ret = "".join(ret)
-		print(ret)
+		for i in ret:		
+			for j, k in morse.items():
+    				if i == j:		
+    					aux += k
+										
+		print(aux)
 
 	else:
 		print("usage: " + sys.argv[0] + " " + "a-zA-Z string")
 
 if __name__ == "__main__":
+    	
 	main()
